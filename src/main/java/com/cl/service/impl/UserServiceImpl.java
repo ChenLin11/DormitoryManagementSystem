@@ -11,11 +11,11 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.dao.UserDao;
-import com.entity.UserEntity;
-import com.service.UserService;
-import com.utils.PageUtils;
-import com.utils.Query;
+import com.cl.dao.UserDao;
+import com.cl.entity.UserEntity;
+import com.cl.service.UserService;
+import com.cl.utils.PageUtils;
+import com.cl.utils.Query;
 
 
 /**
@@ -24,7 +24,6 @@ import com.utils.Query;
 @Service("userService")
 public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements UserService {
 
-	@Override
 	public PageUtils queryPage(Map<String, Object> params) {
 		Page<UserEntity> page = this.selectPage(
                 new Query<UserEntity>(params).getPage(),
@@ -33,12 +32,10 @@ public class UserServiceImpl extends ServiceImpl<UserDao, UserEntity> implements
         return new PageUtils(page);
 	}
 
-	@Override
 	public List<UserEntity> selectListView(Wrapper<UserEntity> wrapper) {
 		return baseMapper.selectListView(wrapper);
 	}
 
-	@Override
 	public PageUtils queryPage(Map<String, Object> params,
 			Wrapper<UserEntity> wrapper) {
 		 Page<UserEntity> page =new Query<UserEntity>(params).getPage();

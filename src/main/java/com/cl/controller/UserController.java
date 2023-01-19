@@ -20,18 +20,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.annotation.IgnoreAuth;
+import com.cl.annotation.IgnoreAuth;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.entity.TokenEntity;
-import com.entity.UserEntity;
-import com.service.TokenService;
-import com.service.UserService;
-import com.utils.CommonUtil;
-import com.utils.MD5Util;
-import com.utils.MPUtil;
-import com.utils.PageUtils;
-import com.utils.R;
-import com.utils.ValidatorUtils;
+import com.cl.entity.TokenEntity;
+import com.cl.entity.UserEntity;
+import com.cl.service.TokenService;
+import com.cl.service.UserService;
+import com.cl.utils.CommonUtil;
+import com.cl.utils.MD5Util;
+import com.cl.utils.MPUtil;
+import com.cl.utils.PageUtils;
+import com.cl.utils.R;
+import com.cl.utils.ValidatorUtils;
 
 /**
  * 登录相关

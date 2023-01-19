@@ -1,22 +1,19 @@
 package com.cl.dao;
 
-import com.entity.SushebaoxiuEntity;
+import com.cl.entity.SushebaoxiuEntity;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import java.util.List;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 
 import org.apache.ibatis.annotations.Param;
-import com.entity.vo.SushebaoxiuVO;
-import com.entity.view.SushebaoxiuView;
+import com.cl.entity.vo.SushebaoxiuVO;
+import com.cl.entity.view.SushebaoxiuView;
 
 
 /**
  * 宿舍报修
- * 
- * @author 
- * @email 
- * @date 2021-01-30 19:50:51
+ *
  */
 public interface SushebaoxiuDao extends BaseMapper<SushebaoxiuEntity> {
 	

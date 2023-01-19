@@ -8,21 +8,20 @@ import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.utils.PageUtils;
-import com.utils.Query;
+import com.cl.utils.PageUtils;
+import com.cl.utils.Query;
 
 
-import com.dao.ChatDao;
-import com.entity.ChatEntity;
-import com.service.ChatService;
-import com.entity.vo.ChatVO;
-import com.entity.view.ChatView;
+import com.cl.dao.ChatDao;
+import com.cl.entity.ChatEntity;
+import com.cl.service.ChatService;
+import com.cl.entity.vo.ChatVO;
+import com.cl.entity.view.ChatView;
 
 @Service("chatService")
 public class ChatServiceImpl extends ServiceImpl<ChatDao, ChatEntity> implements ChatService {
 	
 
-    @Override
     public PageUtils queryPage(Map<String, Object> params) {
         Page<ChatEntity> page = this.selectPage(
                 new Query<ChatEntity>(params).getPage(),
@@ -30,31 +29,26 @@ public class ChatServiceImpl extends ServiceImpl<ChatDao, ChatEntity> implements
         );
         return new PageUtils(page);
     }
-    
-    @Override
+
 	public PageUtils queryPage(Map<String, Object> params, Wrapper<ChatEntity> wrapper) {
 		  Page<ChatView> page =new Query<ChatView>(params).getPage();
 	        page.setRecords(baseMapper.selectListView(page,wrapper));
 	    	PageUtils pageUtil = new PageUtils(page);
 	    	return pageUtil;
  	}
-    
-    @Override
+
 	public List<ChatVO> selectListVO(Wrapper<ChatEntity> wrapper) {
  		return baseMapper.selectListVO(wrapper);
 	}
-	
-	@Override
+
 	public ChatVO selectVO(Wrapper<ChatEntity> wrapper) {
  		return baseMapper.selectVO(wrapper);
 	}
-	
-	@Override
+
 	public List<ChatView> selectListView(Wrapper<ChatEntity> wrapper) {
 		return baseMapper.selectListView(wrapper);
 	}
 
-	@Override
 	public ChatView selectView(Wrapper<ChatEntity> wrapper) {
 		return baseMapper.selectView(wrapper);
 	}

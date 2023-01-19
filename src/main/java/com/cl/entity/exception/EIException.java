@@ -1,9 +1,15 @@
 
-package com.cl.entity;
+package com.cl.entity.exception;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 自定义异常
  */
+@Data
+@NoArgsConstructor   //生成无参数构造
 public class EIException extends RuntimeException {
 	private static final long serialVersionUID = 1L;
 	

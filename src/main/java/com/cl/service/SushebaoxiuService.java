@@ -2,21 +2,18 @@ package com.cl.service;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.service.IService;
-import com.utils.PageUtils;
-import com.entity.SushebaoxiuEntity;
+import com.cl.utils.PageUtils;
+import com.cl.entity.SushebaoxiuEntity;
 import java.util.List;
 import java.util.Map;
-import com.entity.vo.SushebaoxiuVO;
+import com.cl.entity.vo.SushebaoxiuVO;
 import org.apache.ibatis.annotations.Param;
-import com.entity.view.SushebaoxiuView;
+import com.cl.entity.view.SushebaoxiuView;
 
 
 /**
  * 宿舍报修
  *
- * @author 
- * @email 
- * @date 2021-01-30 19:50:51
  */
 public interface SushebaoxiuService extends IService<SushebaoxiuEntity> {
 

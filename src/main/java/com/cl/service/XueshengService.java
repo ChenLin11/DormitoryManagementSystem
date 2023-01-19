@@ -2,21 +2,18 @@ package com.cl.service;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.service.IService;
-import com.utils.PageUtils;
-import com.entity.XueshengEntity;
+import com.cl.utils.PageUtils;
+import com.cl.entity.XueshengEntity;
 import java.util.List;
 import java.util.Map;
-import com.entity.vo.XueshengVO;
+import com.cl.entity.vo.XueshengVO;
 import org.apache.ibatis.annotations.Param;
-import com.entity.view.XueshengView;
+import com.cl.entity.view.XueshengView;
 
 
 /**
  * 学生
  *
- * @author 
- * @email 
- * @date 2021-01-30 19:50:51
  */
 public interface XueshengService extends IService<XueshengEntity> {
 

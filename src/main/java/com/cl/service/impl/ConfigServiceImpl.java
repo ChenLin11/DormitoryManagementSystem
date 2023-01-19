@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.dao.ConfigDao;
-import com.entity.ConfigEntity;
-import com.entity.UserEntity;
-import com.service.ConfigService;
-import com.utils.PageUtils;
-import com.utils.Query;
+import com.cl.dao.ConfigDao;
+import com.cl.entity.ConfigEntity;
+import com.cl.entity.UserEntity;
+import com.cl.service.ConfigService;
+import com.cl.utils.PageUtils;
+import com.cl.utils.Query;
 
 
 /**
@@ -22,7 +22,7 @@ import com.utils.Query;
  */
 @Service("configService")
 public class ConfigServiceImpl extends ServiceImpl<ConfigDao, ConfigEntity> implements ConfigService {
-	@Override
+
 	public PageUtils queryPage(Map<String, Object> params) {
 		Page<ConfigEntity> page = this.selectPage(
                 new Query<ConfigEntity>(params).getPage(),

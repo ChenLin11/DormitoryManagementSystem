@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.annotation.IgnoreAuth;
+import com.cl.annotation.IgnoreAuth;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.entity.ConfigEntity;
-import com.service.ConfigService;
-import com.utils.PageUtils;
-import com.utils.R;
-import com.utils.ValidatorUtils;
+import com.cl.entity.ConfigEntity;
+import com.cl.service.ConfigService;
+import com.cl.utils.PageUtils;
+import com.cl.utils.R;
+import com.cl.utils.ValidatorUtils;
 
 /**
  * 登录相关

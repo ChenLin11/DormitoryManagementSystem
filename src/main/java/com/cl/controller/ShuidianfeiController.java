@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
-import com.utils.ValidatorUtils;
+import com.cl.utils.ValidatorUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,26 +21,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.annotation.IgnoreAuth;
+import com.cl.annotation.IgnoreAuth;
 
-import com.entity.ShuidianfeiEntity;
-import com.entity.view.ShuidianfeiView;
+import com.cl.entity.ShuidianfeiEntity;
+import com.cl.entity.view.ShuidianfeiView;
 
-import com.service.ShuidianfeiService;
-import com.service.TokenService;
-import com.utils.PageUtils;
-import com.utils.R;
-import com.utils.MD5Util;
-import com.utils.MPUtil;
-import com.utils.CommonUtil;
+import com.cl.service.ShuidianfeiService;
+import com.cl.service.TokenService;
+import com.cl.utils.PageUtils;
+import com.cl.utils.R;
+import com.cl.utils.MD5Util;
+import com.cl.utils.MPUtil;
+import com.cl.utils.CommonUtil;
 
 
 /**
  * 水电费
  * 后端接口
- * @author 
- * @email 
- * @date 2021-01-30 19:50:51
  */
 @RestController
 @RequestMapping("/shuidianfei")

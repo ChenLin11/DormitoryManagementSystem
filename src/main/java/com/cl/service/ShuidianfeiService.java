@@ -2,21 +2,18 @@ package com.cl.service;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.service.IService;
-import com.utils.PageUtils;
-import com.entity.ShuidianfeiEntity;
+import com.cl.utils.PageUtils;
+import com.cl.entity.ShuidianfeiEntity;
 import java.util.List;
 import java.util.Map;
-import com.entity.vo.ShuidianfeiVO;
+import com.cl.entity.vo.ShuidianfeiVO;
 import org.apache.ibatis.annotations.Param;
-import com.entity.view.ShuidianfeiView;
+import com.cl.entity.view.ShuidianfeiView;
 
 
 /**
  * 水电费
  *
- * @author 
- * @email 
- * @date 2021-01-30 19:50:51
  */
 public interface ShuidianfeiService extends IService<ShuidianfeiEntity> {
 

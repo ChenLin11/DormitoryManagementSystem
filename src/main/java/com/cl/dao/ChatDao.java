@@ -1,22 +1,19 @@
 package com.cl.dao;
 
-import com.entity.ChatEntity;
+import com.cl.entity.ChatEntity;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import java.util.List;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 
 import org.apache.ibatis.annotations.Param;
-import com.entity.vo.ChatVO;
-import com.entity.view.ChatView;
+import com.cl.entity.vo.ChatVO;
+import com.cl.entity.view.ChatView;
 
 
 /**
  * 在线沟通
- * 
- * @author 
- * @email 
- * @date 2021-01-30 19:50:51
+ *
  */
 public interface ChatDao extends BaseMapper<ChatEntity> {
 	

@@ -2,21 +2,18 @@ package com.cl.service;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.service.IService;
-import com.utils.PageUtils;
-import com.entity.ChatEntity;
+import com.cl.utils.PageUtils;
+import com.cl.entity.ChatEntity;
 import java.util.List;
 import java.util.Map;
-import com.entity.vo.ChatVO;
+import com.cl.entity.vo.ChatVO;
 import org.apache.ibatis.annotations.Param;
-import com.entity.view.ChatView;
+import com.cl.entity.view.ChatView;
 
 
 /**
  * 在线沟通
  *
- * @author 
- * @email 
- * @date 2021-01-30 19:50:51
  */
 public interface ChatService extends IService<ChatEntity> {
 

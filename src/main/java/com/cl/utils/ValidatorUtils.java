@@ -8,7 +8,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
-import com.entity.EIException;
+import com.cl.entity.exception.EIException;
 
 /**
  * hibernate-validator校验工具类

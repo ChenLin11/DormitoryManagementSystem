@@ -1,22 +1,19 @@
 package com.cl.dao;
 
-import com.entity.FangkexinxiEntity;
+import com.cl.entity.FangkexinxiEntity;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import java.util.List;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 
 import org.apache.ibatis.annotations.Param;
-import com.entity.vo.FangkexinxiVO;
-import com.entity.view.FangkexinxiView;
+import com.cl.entity.vo.FangkexinxiVO;
+import com.cl.entity.view.FangkexinxiView;
 
 
 /**
  * 访客信息
- * 
- * @author 
- * @email 
- * @date 2021-01-30 19:50:51
+ *
  */
 public interface FangkexinxiDao extends BaseMapper<FangkexinxiEntity> {
 	

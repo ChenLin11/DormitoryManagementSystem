@@ -1,6 +1,6 @@
 package com.cl.entity.vo;
 
-import com.entity.ShuidianfeiEntity;
+import com.cl.entity.ShuidianfeiEntity;
 
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -14,9 +14,6 @@ import java.io.Serializable;
  * 水电费
  * 手机端接口返回实体辅助类 
  * （主要作用去除一些不必要的字段）
- * @author 
- * @email 
- * @date 2021-01-30 19:50:51
  */
 public class ShuidianfeiVO  implements Serializable {
 	private static final long serialVersionUID = 1L;

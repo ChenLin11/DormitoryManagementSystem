@@ -3,7 +3,7 @@ package com.cl.utils;
 
 import org.apache.commons.lang3.StringUtils;
 
-import com.entity.EIException;
+import com.cl.entity.exception.EIException;
 
 /**
  * SQL过滤

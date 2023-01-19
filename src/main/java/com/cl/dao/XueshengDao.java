@@ -1,22 +1,19 @@
 package com.cl.dao;
 
-import com.entity.XueshengEntity;
+import com.cl.entity.XueshengEntity;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import java.util.List;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 
 import org.apache.ibatis.annotations.Param;
-import com.entity.vo.XueshengVO;
-import com.entity.view.XueshengView;
+import com.cl.entity.vo.XueshengVO;
+import com.cl.entity.view.XueshengView;
 
 
 /**
  * 学生
- * 
- * @author 
- * @email 
- * @date 2021-01-30 19:50:51
+ *
  */
 public interface XueshengDao extends BaseMapper<XueshengEntity> {
 	

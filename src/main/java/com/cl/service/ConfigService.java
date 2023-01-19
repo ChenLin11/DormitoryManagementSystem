@@ -4,8 +4,8 @@ package com.cl.service;
 import java.util.Map;
 
 import com.baomidou.mybatisplus.service.IService;
-import com.entity.ConfigEntity;
-import com.utils.PageUtils;
+import com.cl.entity.ConfigEntity;
+import com.cl.utils.PageUtils;
 
 
 /**

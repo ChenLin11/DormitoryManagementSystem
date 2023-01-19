@@ -1,6 +1,6 @@
 package com.cl.entity.model;
 
-import com.entity.ChatEntity;
+import com.cl.entity.ChatEntity;
 
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;

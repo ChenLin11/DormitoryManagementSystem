@@ -13,13 +13,13 @@ import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
-import com.dao.TokenDao;
-import com.entity.TokenEntity;
-import com.entity.TokenEntity;
-import com.service.TokenService;
-import com.utils.CommonUtil;
-import com.utils.PageUtils;
-import com.utils.Query;
+import com.cl.dao.TokenDao;
+import com.cl.entity.TokenEntity;
+import com.cl.entity.TokenEntity;
+import com.cl.service.TokenService;
+import com.cl.utils.CommonUtil;
+import com.cl.utils.PageUtils;
+import com.cl.utils.Query;
 
 
 /**
@@ -28,7 +28,6 @@ import com.utils.Query;
 @Service("tokenService")
 public class TokenServiceImpl extends ServiceImpl<TokenDao, TokenEntity> implements TokenService {
 
-	@Override
 	public PageUtils queryPage(Map<String, Object> params) {
 		Page<TokenEntity> page = this.selectPage(
                 new Query<TokenEntity>(params).getPage(),
@@ -37,12 +36,10 @@ public class TokenServiceImpl extends ServiceImpl<TokenDao, TokenEntity> impleme
         return new PageUtils(page);
 	}
 
-	@Override
 	public List<TokenEntity> selectListView(Wrapper<TokenEntity> wrapper) {
 		return baseMapper.selectListView(wrapper);
 	}
 
-	@Override
 	public PageUtils queryPage(Map<String, Object> params,
 			Wrapper<TokenEntity> wrapper) {
 		 Page<TokenEntity> page =new Query<TokenEntity>(params).getPage();
@@ -51,7 +48,6 @@ public class TokenServiceImpl extends ServiceImpl<TokenDao, TokenEntity> impleme
 	    	return pageUtil;
 	}
 
-	@Override
 	public String generateToken(Long userid,String username, String tableName, String role) {
 		TokenEntity tokenEntity = this.selectOne(new EntityWrapper<TokenEntity>().eq("userid", userid).eq("role", role));
 		String token = CommonUtil.getRandomString(32);
@@ -68,7 +64,6 @@ public class TokenServiceImpl extends ServiceImpl<TokenDao, TokenEntity> impleme
 		return token;
 	}
 
-	@Override
 	public TokenEntity getTokenEntity(String token) {
 		TokenEntity tokenEntity = this.selectOne(new EntityWrapper<TokenEntity>().eq("token", token));
 		if(tokenEntity == null || tokenEntity.getExpiratedtime().getTime()<new Date().getTime()) {

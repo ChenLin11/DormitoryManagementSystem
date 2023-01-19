@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.annotation.IgnoreAuth;
+import com.cl.annotation.IgnoreAuth;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.entity.ConfigEntity;
-import com.entity.EIException;
-import com.service.ConfigService;
-import com.utils.R;
+import com.cl.entity.ConfigEntity;
+import com.cl.entity.exception.EIException;
+import com.cl.service.ConfigService;
+import com.cl.utils.R;
 
 /**
  * 上传文件映射表

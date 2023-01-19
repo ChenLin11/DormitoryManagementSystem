@@ -1,9 +1,7 @@
 package com.cl.interceptor;
 
-import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
+
 import com.alibaba.fastjson.JSONObject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,11 +12,10 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import com.annotation.IgnoreAuth;
-import com.entity.EIException;
-import com.entity.TokenEntity;
-import com.service.TokenService;
-import com.utils.R;
+import com.cl.annotation.IgnoreAuth;
+import com.cl.entity.TokenEntity;
+import com.cl.service.TokenService;
+import com.cl.utils.R;
 
 /**
  * 权限(Token)验证
@@ -30,8 +27,7 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
 
     @Autowired
     private TokenService tokenService;
-    
-	@Override
+
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
         //支持跨域请求

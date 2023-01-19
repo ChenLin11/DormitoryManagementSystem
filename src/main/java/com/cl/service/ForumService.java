@@ -2,21 +2,18 @@ package com.cl.service;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.service.IService;
-import com.utils.PageUtils;
-import com.entity.ForumEntity;
+import com.cl.utils.PageUtils;
+import com.cl.entity.ForumEntity;
 import java.util.List;
 import java.util.Map;
-import com.entity.vo.ForumVO;
+import com.cl.entity.vo.ForumVO;
 import org.apache.ibatis.annotations.Param;
-import com.entity.view.ForumView;
+import com.cl.entity.view.ForumView;
 
 
 /**
  * 交流论坛
  *
- * @author 
- * @email 
- * @date 2021-01-30 19:50:51
  */
 public interface ForumService extends IService<ForumEntity> {
 

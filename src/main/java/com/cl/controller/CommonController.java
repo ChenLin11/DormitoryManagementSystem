@@ -17,24 +17,19 @@ import org.apache.commons.lang3.StringUtils;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.ResourceUtils;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
 
-import com.annotation.IgnoreAuth;
+import com.cl.annotation.IgnoreAuth;
 import com.baidu.aip.face.AipFace;
 import com.baidu.aip.face.MatchRequest;
 import com.baidu.aip.util.Base64Util;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.entity.ConfigEntity;
-import com.service.CommonService;
-import com.service.ConfigService;
-import com.utils.BaiduUtil;
-import com.utils.FileUtil;
-import com.utils.R;
+import com.cl.entity.ConfigEntity;
+import com.cl.service.CommonService;
+import com.cl.service.ConfigService;
+import com.cl.utils.BaiduUtil;
+import com.cl.utils.FileUtil;
+import com.cl.utils.R;
 
 /**
  * 通用接口

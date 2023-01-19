@@ -2,13 +2,13 @@ package com.cl.service;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.service.IService;
-import com.utils.PageUtils;
-import com.entity.SushexinxiEntity;
+import com.cl.utils.PageUtils;
+import com.cl.entity.SushexinxiEntity;
 import java.util.List;
 import java.util.Map;
-import com.entity.vo.SushexinxiVO;
+import com.cl.entity.vo.SushexinxiVO;
 import org.apache.ibatis.annotations.Param;
-import com.entity.view.SushexinxiView;
+import com.cl.entity.view.SushexinxiView;
 
 
 /**

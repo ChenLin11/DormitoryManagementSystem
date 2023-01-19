@@ -1,6 +1,6 @@
 package com.cl.entity.model;
 
-import com.entity.SushexinxiEntity;
+import com.cl.entity.SushexinxiEntity;
 
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;

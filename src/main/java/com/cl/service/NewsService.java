@@ -2,21 +2,18 @@ package com.cl.service;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.service.IService;
-import com.utils.PageUtils;
-import com.entity.NewsEntity;
+import com.cl.utils.PageUtils;
+import com.cl.entity.NewsEntity;
 import java.util.List;
 import java.util.Map;
-import com.entity.vo.NewsVO;
+import com.cl.entity.vo.NewsVO;
 import org.apache.ibatis.annotations.Param;
-import com.entity.view.NewsView;
+import com.cl.entity.view.NewsView;
 
 
 /**
  * 通知公告
  *
- * @author 
- * @email 
- * @date 2021-01-30 19:50:51
  */
 public interface NewsService extends IService<NewsEntity> {
 

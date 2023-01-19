@@ -1,22 +1,19 @@
 package com.cl.dao;
 
-import com.entity.ForumEntity;
+import com.cl.entity.ForumEntity;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import java.util.List;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 
 import org.apache.ibatis.annotations.Param;
-import com.entity.vo.ForumVO;
-import com.entity.view.ForumView;
+import com.cl.entity.vo.ForumVO;
+import com.cl.entity.view.ForumView;
 
 
 /**
  * 交流论坛
- * 
- * @author 
- * @email 
- * @date 2021-01-30 19:50:51
+ *
  */
 public interface ForumDao extends BaseMapper<ForumEntity> {
 	

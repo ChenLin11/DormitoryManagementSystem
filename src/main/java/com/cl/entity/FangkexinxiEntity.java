@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import com.cl.entity.exception.EIException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.lang.reflect.InvocationTargetException;
 
@@ -15,7 +16,7 @@ import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import org.apache.commons.beanutils.BeanUtils;
+import org.springframework.beans.BeanUtils;
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.enums.FieldFill;
 import com.baomidou.mybatisplus.enums.IdType;
@@ -24,9 +25,6 @@ import com.baomidou.mybatisplus.enums.IdType;
 /**
  * 访客信息
  * 数据库通用操作实体类（普通增删改查）
- * @author 
- * @email 
- * @date 2021-01-30 19:50:51
  */
 @TableName("fangkexinxi")
 public class FangkexinxiEntity<T> implements Serializable {
@@ -40,9 +38,10 @@ public class FangkexinxiEntity<T> implements Serializable {
 	public FangkexinxiEntity(T t) {
 		try {
 			BeanUtils.copyProperties(this, t);
-		} catch (IllegalAccessException | InvocationTargetException e) {
+		}catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new EIException(e.getMessage());
 		}
 	}
 	

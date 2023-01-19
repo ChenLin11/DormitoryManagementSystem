@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
-import com.utils.ValidatorUtils;
+import com.cl.utils.ValidatorUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,26 +21,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.annotation.IgnoreAuth;
+import com.cl.annotation.IgnoreAuth;
 
-import com.entity.NewsEntity;
-import com.entity.view.NewsView;
+import com.cl.entity.NewsEntity;
+import com.cl.entity.view.NewsView;
 
-import com.service.NewsService;
-import com.service.TokenService;
-import com.utils.PageUtils;
-import com.utils.R;
-import com.utils.MD5Util;
-import com.utils.MPUtil;
-import com.utils.CommonUtil;
+import com.cl.service.NewsService;
+import com.cl.service.TokenService;
+import com.cl.utils.PageUtils;
+import com.cl.utils.R;
+import com.cl.utils.MD5Util;
+import com.cl.utils.MPUtil;
+import com.cl.utils.CommonUtil;
 
 
 /**
  * 通知公告
  * 后端接口
- * @author 
- * @email 
- * @date 2021-01-30 19:50:51
  */
 @RestController
 @RequestMapping("/news")
@@ -132,7 +129,7 @@ public class NewsController {
      */
     @RequestMapping("/add")
     public R add(@RequestBody NewsEntity news, HttpServletRequest request){
-    	news.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
+    	news.setId(System.currentTimeMillis()+new Double(Math.floor(Math.random()*1000)).longValue());
     	//ValidatorUtils.validateEntity(news);
 
         newsService.insert(news);

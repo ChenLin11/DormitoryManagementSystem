@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.Param;
 
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.service.IService;
-import com.entity.UserEntity;
-import com.utils.PageUtils;
+import com.cl.entity.UserEntity;
+import com.cl.utils.PageUtils;
 
 
 /**
