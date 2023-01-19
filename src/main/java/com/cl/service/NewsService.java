@@ -1,14 +1,13 @@
 package com.cl.service;
 
-import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.IService;
 import com.cl.utils.PageUtils;
 import com.cl.entity.NewsEntity;
 import java.util.List;
 import java.util.Map;
 import com.cl.entity.vo.NewsVO;
 import org.apache.ibatis.annotations.Param;
-import com.cl.entity.view.NewsView;
 
 
 /**
@@ -19,15 +18,15 @@ public interface NewsService extends IService<NewsEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
     
-   	List<NewsVO> selectListVO(Wrapper<NewsEntity> wrapper);
+   	List<NewsVO> selectListVO(QueryWrapper<NewsEntity> wrapper);
    	
-   	NewsVO selectVO(@Param("ew") Wrapper<NewsEntity> wrapper);
+   	NewsVO selectVO(@Param("ew") QueryWrapper<NewsEntity> wrapper);
    	
-   	List<NewsView> selectListView(Wrapper<NewsEntity> wrapper);
+   	List<NewsEntity> selectListView(QueryWrapper<NewsEntity> wrapper);
    	
-   	NewsView selectView(@Param("ew") Wrapper<NewsEntity> wrapper);
+   	NewsEntity selectView(@Param("ew") QueryWrapper<NewsEntity> wrapper);
    	
-   	PageUtils queryPage(Map<String, Object> params, Wrapper<NewsEntity> wrapper);
+   	PageUtils queryPage(Map<String, Object> params, QueryWrapper<NewsEntity> wrapper);
    	
 }
 

@@ -19,7 +19,7 @@ import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.cl.entity.DormInfoEntity;
 import com.cl.entity.view.DormInfoView;
 
-import com.cl.service.SushexinxiService;
+import com.cl.service.DormInfoService;
 import com.cl.utils.PageUtils;
 import com.cl.utils.R;
 import com.cl.utils.MPUtil;
@@ -33,7 +33,7 @@ import com.cl.utils.MPUtil;
 @RequestMapping("/sushexinxi")
 public class SushexinxiController {
     @Autowired
-    private SushexinxiService sushexinxiService;
+    private DormInfoService dormInfoService;
     
 
 
@@ -44,7 +44,7 @@ public class SushexinxiController {
     public R page(@RequestParam Map<String, Object> params, DormInfoEntity sushexinxi, HttpServletRequest request){
 
         EntityWrapper<DormInfoEntity> ew = new EntityWrapper<DormInfoEntity>();
-		PageUtils page = sushexinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, sushexinxi), params), params));
+		PageUtils page = dormInfoService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, sushexinxi), params), params));
         return R.ok().put("data", page);
     }
     
@@ -54,7 +54,7 @@ public class SushexinxiController {
     @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params, DormInfoEntity sushexinxi, HttpServletRequest request){
         EntityWrapper<DormInfoEntity> ew = new EntityWrapper<DormInfoEntity>();
-		PageUtils page = sushexinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, sushexinxi), params), params));
+		PageUtils page = dormInfoService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, sushexinxi), params), params));
         return R.ok().put("data", page);
     }
 
@@ -65,7 +65,7 @@ public class SushexinxiController {
     public R list( DormInfoEntity sushexinxi){
        	EntityWrapper<DormInfoEntity> ew = new EntityWrapper<DormInfoEntity>();
       	ew.allEq(MPUtil.allEQMapPre( sushexinxi, "sushexinxi")); 
-        return R.ok().put("data", sushexinxiService.selectListView(ew));
+        return R.ok().put("data", dormInfoService.selectListView(ew));
     }
 
 	 /**
@@ -75,7 +75,7 @@ public class SushexinxiController {
     public R query(DormInfoEntity sushexinxi){
         EntityWrapper<DormInfoEntity> ew = new EntityWrapper<DormInfoEntity>();
  		ew.allEq(MPUtil.allEQMapPre( sushexinxi, "sushexinxi")); 
-		DormInfoView sushexinxiView =  sushexinxiService.selectView(ew);
+		DormInfoView sushexinxiView =  dormInfoService.selectView(ew);
 		return R.ok("查询宿舍信息成功").put("data", sushexinxiView);
     }
 	
@@ -84,7 +84,7 @@ public class SushexinxiController {
      */
     @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
-        DormInfoEntity sushexinxi = sushexinxiService.selectById(id);
+        DormInfoEntity sushexinxi = dormInfoService.selectById(id);
         return R.ok().put("data", sushexinxi);
     }
 
@@ -93,7 +93,7 @@ public class SushexinxiController {
      */
     @RequestMapping("/detail/{id}")
     public R detail(@PathVariable("id") Long id){
-        DormInfoEntity sushexinxi = sushexinxiService.selectById(id);
+        DormInfoEntity sushexinxi = dormInfoService.selectById(id);
         return R.ok().put("data", sushexinxi);
     }
     
@@ -108,7 +108,7 @@ public class SushexinxiController {
     	sushexinxi.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
     	//ValidatorUtils.validateEntity(sushexinxi);
 
-        sushexinxiService.insert(sushexinxi);
+        dormInfoService.insert(sushexinxi);
         return R.ok();
     }
     
@@ -120,7 +120,7 @@ public class SushexinxiController {
     	sushexinxi.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
     	//ValidatorUtils.validateEntity(sushexinxi);
 
-        sushexinxiService.insert(sushexinxi);
+        dormInfoService.insert(sushexinxi);
         return R.ok();
     }
 
@@ -130,7 +130,7 @@ public class SushexinxiController {
     @RequestMapping("/update")
     public R update(@RequestBody DormInfoEntity sushexinxi, HttpServletRequest request){
         //ValidatorUtils.validateEntity(sushexinxi);
-        sushexinxiService.updateById(sushexinxi);//全部更新
+        dormInfoService.updateById(sushexinxi);//全部更新
         return R.ok();
     }
     
@@ -140,7 +140,7 @@ public class SushexinxiController {
      */
     @RequestMapping("/delete")
     public R delete(@RequestBody Long[] ids){
-        sushexinxiService.deleteBatchIds(Arrays.asList(ids));
+        dormInfoService.deleteBatchIds(Arrays.asList(ids));
         return R.ok();
     }
     
@@ -183,7 +183,7 @@ public class SushexinxiController {
 		}
 
 
-		int count = sushexinxiService.selectCount(wrapper);
+		int count = dormInfoService.selectCount(wrapper);
 		return R.ok().put("count", count);
 	}
 	

@@ -4,6 +4,7 @@ package com.cl.utils;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.apache.commons.lang3.StringUtils;
 
 import com.baomidou.mybatisplus.plugins.Page;
@@ -84,7 +85,7 @@ public class Query<T> extends LinkedHashMap<String, Object> {
 
     }
 
-    public Page<T> getPage() {
+    public Page getPage() {
         return page;
     }
 

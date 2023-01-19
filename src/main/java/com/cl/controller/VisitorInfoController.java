@@ -16,23 +16,24 @@ import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 
-import com.cl.entity.RepairEntity;
-import com.cl.entity.view.RepairView;
+import com.cl.entity.VisitorInfoEntity;
+import com.cl.entity.view.VisitorInfoView;
 
-import com.cl.service.RepairService;
+import com.cl.service.VisitorInfoService;
 import com.cl.utils.PageUtils;
 import com.cl.utils.R;
 import com.cl.utils.MPUtil;
 
 
 /**
- * 宿舍报修
+ * 访客信息
+ * 后端接口
  */
 @RestController
-@RequestMapping("/sushebaoxiu")
-public class SushebaoxiuController {
+@RequestMapping("/fangkexinxi")
+public class VisitorInfoController {
     @Autowired
-    private RepairService repairService;
+    private VisitorInfoService visitorInfoService;
     
 
 
@@ -40,14 +41,10 @@ public class SushebaoxiuController {
      * 后端列表
      */
     @RequestMapping("/page")
-    public R page(@RequestParam Map<String, Object> params, RepairEntity sushebaoxiu, HttpServletRequest request){
+    public R page(@RequestParam Map<String, Object> params, VisitorInfoEntity fangkexinxi){
 
-		String tableName = request.getSession().getAttribute("tableName").toString();
-		if(tableName.equals("xuesheng")) {
-			sushebaoxiu.setXuehao((String)request.getSession().getAttribute("username"));
-		}
-        EntityWrapper<RepairEntity> ew = new EntityWrapper<RepairEntity>();
-		PageUtils page = repairService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, sushebaoxiu), params), params));
+        EntityWrapper<VisitorInfoEntity> ew = new EntityWrapper<VisitorInfoEntity>();
+		PageUtils page = visitorInfoService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, fangkexinxi), params), params));
         return R.ok().put("data", page);
     }
     
@@ -55,9 +52,9 @@ public class SushebaoxiuController {
      * 前端列表
      */
     @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params, RepairEntity sushebaoxiu, HttpServletRequest request){
-        EntityWrapper<RepairEntity> ew = new EntityWrapper<RepairEntity>();
-		PageUtils page = repairService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, sushebaoxiu), params), params));
+    public R list(@RequestParam Map<String, Object> params, VisitorInfoEntity fangkexinxi){
+        EntityWrapper<VisitorInfoEntity> ew = new EntityWrapper<VisitorInfoEntity>();
+		PageUtils page = visitorInfoService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, fangkexinxi), params), params));
         return R.ok().put("data", page);
     }
 
@@ -65,21 +62,21 @@ public class SushebaoxiuController {
      * 列表
      */
     @RequestMapping("/lists")
-    public R list( RepairEntity sushebaoxiu){
-       	EntityWrapper<RepairEntity> ew = new EntityWrapper<RepairEntity>();
-      	ew.allEq(MPUtil.allEQMapPre( sushebaoxiu, "sushebaoxiu")); 
-        return R.ok().put("data", repairService.selectListView(ew));
+    public R list( VisitorInfoEntity fangkexinxi){
+       	EntityWrapper<VisitorInfoEntity> ew = new EntityWrapper<VisitorInfoEntity>();
+      	ew.allEq(MPUtil.allEQMapPre( fangkexinxi, "fangkexinxi")); 
+        return R.ok().put("data", visitorInfoService.selectListView(ew));
     }
 
 	 /**
      * 查询
      */
     @RequestMapping("/query")
-    public R query(RepairEntity sushebaoxiu){
-        EntityWrapper<RepairEntity> ew = new EntityWrapper<RepairEntity>();
- 		ew.allEq(MPUtil.allEQMapPre( sushebaoxiu, "sushebaoxiu")); 
-		RepairView sushebaoxiuView =  repairService.selectView(ew);
-		return R.ok("查询宿舍报修成功").put("data", sushebaoxiuView);
+    public R query(VisitorInfoEntity fangkexinxi){
+        EntityWrapper<VisitorInfoEntity> ew = new EntityWrapper<VisitorInfoEntity>();
+ 		ew.allEq(MPUtil.allEQMapPre( fangkexinxi, "fangkexinxi")); 
+		VisitorInfoView fangkexinxiView =  visitorInfoService.selectView(ew);
+		return R.ok("查询访客信息成功").put("data", fangkexinxiView);
     }
 	
     /**
@@ -87,8 +84,8 @@ public class SushebaoxiuController {
      */
     @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
-        RepairEntity sushebaoxiu = repairService.selectById(id);
-        return R.ok().put("data", sushebaoxiu);
+        VisitorInfoEntity fangkexinxi = visitorInfoService.selectById(id);
+        return R.ok().put("data", fangkexinxi);
     }
 
     /**
@@ -96,8 +93,8 @@ public class SushebaoxiuController {
      */
     @RequestMapping("/detail/{id}")
     public R detail(@PathVariable("id") Long id){
-        RepairEntity sushebaoxiu = repairService.selectById(id);
-        return R.ok().put("data", sushebaoxiu);
+        VisitorInfoEntity fangkexinxi = visitorInfoService.selectById(id);
+        return R.ok().put("data", fangkexinxi);
     }
     
 
@@ -107,11 +104,11 @@ public class SushebaoxiuController {
      * 后端保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody RepairEntity sushebaoxiu, HttpServletRequest request){
-    	sushebaoxiu.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
-    	//ValidatorUtils.validateEntity(sushebaoxiu);
+    public R save(@RequestBody VisitorInfoEntity fangkexinxi, HttpServletRequest request){
+    	fangkexinxi.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
+    	//ValidatorUtils.validateEntity(fangkexinxi);
 
-        repairService.insert(sushebaoxiu);
+        visitorInfoService.insert(fangkexinxi);
         return R.ok();
     }
     
@@ -119,11 +116,11 @@ public class SushebaoxiuController {
      * 前端保存
      */
     @RequestMapping("/add")
-    public R add(@RequestBody RepairEntity sushebaoxiu, HttpServletRequest request){
-    	sushebaoxiu.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
-    	//ValidatorUtils.validateEntity(sushebaoxiu);
+    public R add(@RequestBody VisitorInfoEntity fangkexinxi, HttpServletRequest request){
+    	fangkexinxi.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
+    	//ValidatorUtils.validateEntity(fangkexinxi);
 
-        repairService.insert(sushebaoxiu);
+        visitorInfoService.insert(fangkexinxi);
         return R.ok();
     }
 
@@ -131,9 +128,9 @@ public class SushebaoxiuController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody RepairEntity sushebaoxiu, HttpServletRequest request){
-        //ValidatorUtils.validateEntity(sushebaoxiu);
-        repairService.updateById(sushebaoxiu);//全部更新
+    public R update(@RequestBody VisitorInfoEntity fangkexinxi, HttpServletRequest request){
+        //ValidatorUtils.validateEntity(fangkexinxi);
+        visitorInfoService.updateById(fangkexinxi);//全部更新
         return R.ok();
     }
     
@@ -143,7 +140,7 @@ public class SushebaoxiuController {
      */
     @RequestMapping("/delete")
     public R delete(@RequestBody Long[] ids){
-        repairService.deleteBatchIds(Arrays.asList(ids));
+        visitorInfoService.deleteBatchIds(Arrays.asList(ids));
         return R.ok();
     }
     
@@ -177,7 +174,7 @@ public class SushebaoxiuController {
 			}
 		}
 		
-		Wrapper<RepairEntity> wrapper = new EntityWrapper<RepairEntity>();
+		Wrapper<VisitorInfoEntity> wrapper = new EntityWrapper<VisitorInfoEntity>();
 		if(map.get("remindstart")!=null) {
 			wrapper.ge(columnName, map.get("remindstart"));
 		}
@@ -185,12 +182,8 @@ public class SushebaoxiuController {
 			wrapper.le(columnName, map.get("remindend"));
 		}
 
-		String tableName = request.getSession().getAttribute("tableName").toString();
-		if(tableName.equals("xuesheng")) {
-			wrapper.eq("xuehao", (String)request.getSession().getAttribute("username"));
-		}
 
-		int count = repairService.selectCount(wrapper);
+		int count = visitorInfoService.selectCount(wrapper);
 		return R.ok().put("count", count);
 	}
 	

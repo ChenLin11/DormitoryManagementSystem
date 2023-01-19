@@ -19,7 +19,7 @@ import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.cl.entity.ElectricityCostEntity;
 import com.cl.entity.view.ElectricityCostView;
 
-import com.cl.service.ShuidianfeiService;
+import com.cl.service.ElectricityCostService;
 import com.cl.utils.PageUtils;
 import com.cl.utils.R;
 import com.cl.utils.MPUtil;
@@ -33,7 +33,7 @@ import com.cl.utils.MPUtil;
 @RequestMapping("/shuidianfei")
 public class ShuidianfeiController {
     @Autowired
-    private ShuidianfeiService shuidianfeiService;
+    private ElectricityCostService electricityCostService;
     
 
 
@@ -44,7 +44,7 @@ public class ShuidianfeiController {
     public R page(@RequestParam Map<String, Object> params, ElectricityCostEntity shuidianfei, HttpServletRequest request){
 
         EntityWrapper<ElectricityCostEntity> ew = new EntityWrapper<ElectricityCostEntity>();
-		PageUtils page = shuidianfeiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, shuidianfei), params), params));
+		PageUtils page = electricityCostService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, shuidianfei), params), params));
         return R.ok().put("data", page);
     }
     
@@ -54,7 +54,7 @@ public class ShuidianfeiController {
     @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params, ElectricityCostEntity shuidianfei, HttpServletRequest request){
         EntityWrapper<ElectricityCostEntity> ew = new EntityWrapper<ElectricityCostEntity>();
-		PageUtils page = shuidianfeiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, shuidianfei), params), params));
+		PageUtils page = electricityCostService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, shuidianfei), params), params));
         return R.ok().put("data", page);
     }
 
@@ -65,7 +65,7 @@ public class ShuidianfeiController {
     public R list( ElectricityCostEntity shuidianfei){
        	EntityWrapper<ElectricityCostEntity> ew = new EntityWrapper<ElectricityCostEntity>();
       	ew.allEq(MPUtil.allEQMapPre( shuidianfei, "shuidianfei")); 
-        return R.ok().put("data", shuidianfeiService.selectListView(ew));
+        return R.ok().put("data", electricityCostService.selectListView(ew));
     }
 
 	 /**
@@ -75,7 +75,7 @@ public class ShuidianfeiController {
     public R query(ElectricityCostEntity shuidianfei){
         EntityWrapper<ElectricityCostEntity> ew = new EntityWrapper<ElectricityCostEntity>();
  		ew.allEq(MPUtil.allEQMapPre( shuidianfei, "shuidianfei")); 
-		ElectricityCostView shuidianfeiView =  shuidianfeiService.selectView(ew);
+		ElectricityCostView shuidianfeiView =  electricityCostService.selectView(ew);
 		return R.ok("查询水电费成功").put("data", shuidianfeiView);
     }
 	
@@ -84,7 +84,7 @@ public class ShuidianfeiController {
      */
     @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
-        ElectricityCostEntity shuidianfei = shuidianfeiService.selectById(id);
+        ElectricityCostEntity shuidianfei = electricityCostService.selectById(id);
         return R.ok().put("data", shuidianfei);
     }
 
@@ -93,7 +93,7 @@ public class ShuidianfeiController {
      */
     @RequestMapping("/detail/{id}")
     public R detail(@PathVariable("id") Long id){
-        ElectricityCostEntity shuidianfei = shuidianfeiService.selectById(id);
+        ElectricityCostEntity shuidianfei = electricityCostService.selectById(id);
         return R.ok().put("data", shuidianfei);
     }
     
@@ -108,7 +108,7 @@ public class ShuidianfeiController {
     	shuidianfei.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
     	//ValidatorUtils.validateEntity(shuidianfei);
 
-        shuidianfeiService.insert(shuidianfei);
+        electricityCostService.insert(shuidianfei);
         return R.ok();
     }
     
@@ -120,7 +120,7 @@ public class ShuidianfeiController {
     	shuidianfei.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
     	//ValidatorUtils.validateEntity(shuidianfei);
 
-        shuidianfeiService.insert(shuidianfei);
+        electricityCostService.insert(shuidianfei);
         return R.ok();
     }
 
@@ -130,7 +130,7 @@ public class ShuidianfeiController {
     @RequestMapping("/update")
     public R update(@RequestBody ElectricityCostEntity shuidianfei, HttpServletRequest request){
         //ValidatorUtils.validateEntity(shuidianfei);
-        shuidianfeiService.updateById(shuidianfei);//全部更新
+        electricityCostService.updateById(shuidianfei);//全部更新
         return R.ok();
     }
     
@@ -140,7 +140,7 @@ public class ShuidianfeiController {
      */
     @RequestMapping("/delete")
     public R delete(@RequestBody Long[] ids){
-        shuidianfeiService.deleteBatchIds(Arrays.asList(ids));
+        electricityCostService.deleteBatchIds(Arrays.asList(ids));
         return R.ok();
     }
     
@@ -183,7 +183,7 @@ public class ShuidianfeiController {
 		}
 
 
-		int count = shuidianfeiService.selectCount(wrapper);
+		int count = electricityCostService.selectCount(wrapper);
 		return R.ok().put("count", count);
 	}
 	

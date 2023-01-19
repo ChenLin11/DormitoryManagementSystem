@@ -5,6 +5,9 @@ package com.cl.service.impl;
 import java.util.List;
 import java.util.Map;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.cl.entity.ChatEntity;
+import com.cl.mapper.ChatMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,8 +19,8 @@ import com.cl.service.CommonService;
  * 系统用户
  */
 @Service("commonService")
-public class CommonServiceImpl implements CommonService {
-	
+public class CommonServiceImpl implements ServiceImpl<CommonMapper, ChatEntity> implements CommonService{
+
 	@Autowired
 	private CommonDao commonDao;
 

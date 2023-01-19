@@ -20,7 +20,7 @@ import com.cl.annotation.IgnoreAuth;
 import com.cl.entity.Student;
 import com.cl.entity.view.XueshengView;
 
-import com.cl.service.XueshengService;
+import com.cl.service.StudentService;
 import com.cl.service.TokenService;
 import com.cl.utils.PageUtils;
 import com.cl.utils.R;
@@ -35,7 +35,7 @@ import com.cl.utils.MPUtil;
 @RequestMapping("/xuesheng")
 public class XueshengController {
     @Autowired
-    private XueshengService xueshengService;
+    private StudentService studentService;
     
 	@Autowired
 	private TokenService tokenService;
@@ -46,7 +46,7 @@ public class XueshengController {
 	@IgnoreAuth
 	@RequestMapping(value = "/login")
 	public R login(String username, String password, String captcha, HttpServletRequest request) {
-		Student user = xueshengService.selectOne(new EntityWrapper<Student>().eq("xuehao", username));
+		Student user = studentService.selectOne(new EntityWrapper<Student>().eq("xuehao", username));
 		if(user==null || !user.getMima().equals(password)) {
 			return R.error("账号或密码不正确");
 		}
@@ -61,13 +61,13 @@ public class XueshengController {
     @RequestMapping("/register")
     public R register(@RequestBody Student xuesheng){
     	//ValidatorUtils.validateEntity(xuesheng);
-    	Student user = xueshengService.selectOne(new EntityWrapper<Student>().eq("xuehao", xuesheng.getXuehao()));
+    	Student user = studentService.selectOne(new EntityWrapper<Student>().eq("xuehao", xuesheng.getXuehao()));
 		if(user!=null) {
 			return R.error("注册用户已存在");
 		}
 		Long uId = new Date().getTime();
 		xuesheng.setId(uId);
-        xueshengService.insert(xuesheng);
+        studentService.insert(xuesheng);
         return R.ok();
     }
 	
@@ -86,7 +86,7 @@ public class XueshengController {
     @RequestMapping("/session")
     public R getCurrUser(HttpServletRequest request){
     	Long id = (Long)request.getSession().getAttribute("userId");
-        Student user = xueshengService.selectById(id);
+        Student user = studentService.selectById(id);
         return R.ok().put("data", user);
     }
     
@@ -96,12 +96,12 @@ public class XueshengController {
     @IgnoreAuth
 	@RequestMapping(value = "/resetPass")
     public R resetPass(String username, HttpServletRequest request){
-    	Student user = xueshengService.selectOne(new EntityWrapper<Student>().eq("xuehao", username));
+    	Student user = studentService.selectOne(new EntityWrapper<Student>().eq("xuehao", username));
     	if(user==null) {
     		return R.error("账号不存在");
     	}
     	user.setMima("123456");
-        xueshengService.updateById(user);
+        studentService.updateById(user);
         return R.ok("密码已重置为：123456");
     }
 
@@ -113,7 +113,7 @@ public class XueshengController {
     public R page(@RequestParam Map<String, Object> params, Student xuesheng, HttpServletRequest request){
 
         EntityWrapper<Student> ew = new EntityWrapper<Student>();
-		PageUtils page = xueshengService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, xuesheng), params), params));
+		PageUtils page = studentService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, xuesheng), params), params));
         return R.ok().put("data", page);
     }
     
@@ -123,7 +123,7 @@ public class XueshengController {
     @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params, Student xuesheng, HttpServletRequest request){
         EntityWrapper<Student> ew = new EntityWrapper<Student>();
-		PageUtils page = xueshengService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, xuesheng), params), params));
+		PageUtils page = studentService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, xuesheng), params), params));
         return R.ok().put("data", page);
     }
 
@@ -134,7 +134,7 @@ public class XueshengController {
     public R list( Student xuesheng){
        	EntityWrapper<Student> ew = new EntityWrapper<Student>();
       	ew.allEq(MPUtil.allEQMapPre( xuesheng, "xuesheng")); 
-        return R.ok().put("data", xueshengService.selectListView(ew));
+        return R.ok().put("data", studentService.selectListView(ew));
     }
 
 	 /**
@@ -144,7 +144,7 @@ public class XueshengController {
     public R query(Student xuesheng){
         EntityWrapper<Student> ew = new EntityWrapper<Student>();
  		ew.allEq(MPUtil.allEQMapPre( xuesheng, "xuesheng")); 
-		XueshengView xueshengView =  xueshengService.selectView(ew);
+		XueshengView xueshengView =  studentService.selectView(ew);
 		return R.ok("查询学生成功").put("data", xueshengView);
     }
 	
@@ -153,7 +153,7 @@ public class XueshengController {
      */
     @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
-        Student xuesheng = xueshengService.selectById(id);
+        Student xuesheng = studentService.selectById(id);
         return R.ok().put("data", xuesheng);
     }
 
@@ -162,7 +162,7 @@ public class XueshengController {
      */
     @RequestMapping("/detail/{id}")
     public R detail(@PathVariable("id") Long id){
-        Student xuesheng = xueshengService.selectById(id);
+        Student xuesheng = studentService.selectById(id);
         return R.ok().put("data", xuesheng);
     }
     
@@ -176,13 +176,13 @@ public class XueshengController {
     public R save(@RequestBody Student xuesheng, HttpServletRequest request){
     	xuesheng.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
     	//ValidatorUtils.validateEntity(xuesheng);
-    	Student user = xueshengService.selectOne(new EntityWrapper<Student>().eq("xuehao", xuesheng.getXuehao()));
+    	Student user = studentService.selectOne(new EntityWrapper<Student>().eq("xuehao", xuesheng.getXuehao()));
 		if(user!=null) {
 			return R.error("用户已存在");
 		}
 
 		xuesheng.setId(new Date().getTime());
-        xueshengService.insert(xuesheng);
+        studentService.insert(xuesheng);
         return R.ok();
     }
     
@@ -193,13 +193,13 @@ public class XueshengController {
     public R add(@RequestBody Student xuesheng, HttpServletRequest request){
     	xuesheng.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
     	//ValidatorUtils.validateEntity(xuesheng);
-    	Student user = xueshengService.selectOne(new EntityWrapper<Student>().eq("xuehao", xuesheng.getXuehao()));
+    	Student user = studentService.selectOne(new EntityWrapper<Student>().eq("xuehao", xuesheng.getXuehao()));
 		if(user!=null) {
 			return R.error("用户已存在");
 		}
 
 		xuesheng.setId(new Date().getTime());
-        xueshengService.insert(xuesheng);
+        studentService.insert(xuesheng);
         return R.ok();
     }
 
@@ -209,7 +209,7 @@ public class XueshengController {
     @RequestMapping("/update")
     public R update(@RequestBody Student xuesheng, HttpServletRequest request){
         //ValidatorUtils.validateEntity(xuesheng);
-        xueshengService.updateById(xuesheng);//全部更新
+        studentService.updateById(xuesheng);//全部更新
         return R.ok();
     }
     
@@ -219,7 +219,7 @@ public class XueshengController {
      */
     @RequestMapping("/delete")
     public R delete(@RequestBody Long[] ids){
-        xueshengService.deleteBatchIds(Arrays.asList(ids));
+        studentService.deleteBatchIds(Arrays.asList(ids));
         return R.ok();
     }
     
@@ -262,7 +262,7 @@ public class XueshengController {
 		}
 
 
-		int count = xueshengService.selectCount(wrapper);
+		int count = studentService.selectCount(wrapper);
 		return R.ok().put("count", count);
 	}
 	
