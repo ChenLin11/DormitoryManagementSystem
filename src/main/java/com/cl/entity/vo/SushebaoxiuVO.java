@@ -1,7 +1,5 @@
 package com.cl.entity.vo;
 
-import com.cl.entity.SushebaoxiuEntity;
-
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;

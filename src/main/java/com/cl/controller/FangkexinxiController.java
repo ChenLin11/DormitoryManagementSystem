@@ -1,18 +1,12 @@
 package com.cl.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Map;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Date;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
-import com.cl.utils.ValidatorUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,18 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.cl.annotation.IgnoreAuth;
 
-import com.cl.entity.FangkexinxiEntity;
-import com.cl.entity.view.FangkexinxiView;
+import com.cl.entity.VisitorInfoEntity;
+import com.cl.entity.view.VisitorInfoView;
 
 import com.cl.service.FangkexinxiService;
-import com.cl.service.TokenService;
 import com.cl.utils.PageUtils;
 import com.cl.utils.R;
-import com.cl.utils.MD5Util;
 import com.cl.utils.MPUtil;
-import com.cl.utils.CommonUtil;
 
 
 /**
@@ -51,9 +41,9 @@ public class FangkexinxiController {
      * 后端列表
      */
     @RequestMapping("/page")
-    public R page(@RequestParam Map<String, Object> params,FangkexinxiEntity fangkexinxi, HttpServletRequest request){
+    public R page(@RequestParam Map<String, Object> params, VisitorInfoEntity fangkexinxi, HttpServletRequest request){
 
-        EntityWrapper<FangkexinxiEntity> ew = new EntityWrapper<FangkexinxiEntity>();
+        EntityWrapper<VisitorInfoEntity> ew = new EntityWrapper<VisitorInfoEntity>();
 		PageUtils page = fangkexinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, fangkexinxi), params), params));
         return R.ok().put("data", page);
     }
@@ -62,8 +52,8 @@ public class FangkexinxiController {
      * 前端列表
      */
     @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params,FangkexinxiEntity fangkexinxi, HttpServletRequest request){
-        EntityWrapper<FangkexinxiEntity> ew = new EntityWrapper<FangkexinxiEntity>();
+    public R list(@RequestParam Map<String, Object> params, VisitorInfoEntity fangkexinxi, HttpServletRequest request){
+        EntityWrapper<VisitorInfoEntity> ew = new EntityWrapper<VisitorInfoEntity>();
 		PageUtils page = fangkexinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, fangkexinxi), params), params));
         return R.ok().put("data", page);
     }
@@ -72,8 +62,8 @@ public class FangkexinxiController {
      * 列表
      */
     @RequestMapping("/lists")
-    public R list( FangkexinxiEntity fangkexinxi){
-       	EntityWrapper<FangkexinxiEntity> ew = new EntityWrapper<FangkexinxiEntity>();
+    public R list( VisitorInfoEntity fangkexinxi){
+       	EntityWrapper<VisitorInfoEntity> ew = new EntityWrapper<VisitorInfoEntity>();
       	ew.allEq(MPUtil.allEQMapPre( fangkexinxi, "fangkexinxi")); 
         return R.ok().put("data", fangkexinxiService.selectListView(ew));
     }
@@ -82,10 +72,10 @@ public class FangkexinxiController {
      * 查询
      */
     @RequestMapping("/query")
-    public R query(FangkexinxiEntity fangkexinxi){
-        EntityWrapper< FangkexinxiEntity> ew = new EntityWrapper< FangkexinxiEntity>();
+    public R query(VisitorInfoEntity fangkexinxi){
+        EntityWrapper<VisitorInfoEntity> ew = new EntityWrapper<VisitorInfoEntity>();
  		ew.allEq(MPUtil.allEQMapPre( fangkexinxi, "fangkexinxi")); 
-		FangkexinxiView fangkexinxiView =  fangkexinxiService.selectView(ew);
+		VisitorInfoView fangkexinxiView =  fangkexinxiService.selectView(ew);
 		return R.ok("查询访客信息成功").put("data", fangkexinxiView);
     }
 	
@@ -94,7 +84,7 @@ public class FangkexinxiController {
      */
     @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
-        FangkexinxiEntity fangkexinxi = fangkexinxiService.selectById(id);
+        VisitorInfoEntity fangkexinxi = fangkexinxiService.selectById(id);
         return R.ok().put("data", fangkexinxi);
     }
 
@@ -103,7 +93,7 @@ public class FangkexinxiController {
      */
     @RequestMapping("/detail/{id}")
     public R detail(@PathVariable("id") Long id){
-        FangkexinxiEntity fangkexinxi = fangkexinxiService.selectById(id);
+        VisitorInfoEntity fangkexinxi = fangkexinxiService.selectById(id);
         return R.ok().put("data", fangkexinxi);
     }
     
@@ -114,7 +104,7 @@ public class FangkexinxiController {
      * 后端保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody FangkexinxiEntity fangkexinxi, HttpServletRequest request){
+    public R save(@RequestBody VisitorInfoEntity fangkexinxi, HttpServletRequest request){
     	fangkexinxi.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
     	//ValidatorUtils.validateEntity(fangkexinxi);
 
@@ -126,7 +116,7 @@ public class FangkexinxiController {
      * 前端保存
      */
     @RequestMapping("/add")
-    public R add(@RequestBody FangkexinxiEntity fangkexinxi, HttpServletRequest request){
+    public R add(@RequestBody VisitorInfoEntity fangkexinxi, HttpServletRequest request){
     	fangkexinxi.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
     	//ValidatorUtils.validateEntity(fangkexinxi);
 
@@ -138,7 +128,7 @@ public class FangkexinxiController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody FangkexinxiEntity fangkexinxi, HttpServletRequest request){
+    public R update(@RequestBody VisitorInfoEntity fangkexinxi, HttpServletRequest request){
         //ValidatorUtils.validateEntity(fangkexinxi);
         fangkexinxiService.updateById(fangkexinxi);//全部更新
         return R.ok();
@@ -184,7 +174,7 @@ public class FangkexinxiController {
 			}
 		}
 		
-		Wrapper<FangkexinxiEntity> wrapper = new EntityWrapper<FangkexinxiEntity>();
+		Wrapper<VisitorInfoEntity> wrapper = new EntityWrapper<VisitorInfoEntity>();
 		if(map.get("remindstart")!=null) {
 			wrapper.ge(columnName, map.get("remindstart"));
 		}

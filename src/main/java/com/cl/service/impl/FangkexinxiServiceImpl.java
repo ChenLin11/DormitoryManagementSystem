@@ -13,43 +13,43 @@ import com.cl.utils.Query;
 
 
 import com.cl.dao.FangkexinxiDao;
-import com.cl.entity.FangkexinxiEntity;
+import com.cl.entity.VisitorInfoEntity;
 import com.cl.service.FangkexinxiService;
-import com.cl.entity.vo.FangkexinxiVO;
-import com.cl.entity.view.FangkexinxiView;
+import com.cl.entity.vo.VisitorInfoVO;
+import com.cl.entity.view.VisitorInfoView;
 
 @Service("fangkexinxiService")
-public class FangkexinxiServiceImpl extends ServiceImpl<FangkexinxiDao, FangkexinxiEntity> implements FangkexinxiService {
+public class FangkexinxiServiceImpl extends ServiceImpl<FangkexinxiDao, VisitorInfoEntity> implements FangkexinxiService {
 	
 
     public PageUtils queryPage(Map<String, Object> params) {
-        Page<FangkexinxiEntity> page = this.selectPage(
-                new Query<FangkexinxiEntity>(params).getPage(),
-                new EntityWrapper<FangkexinxiEntity>()
+        Page<VisitorInfoEntity> page = this.selectPage(
+                new Query<VisitorInfoEntity>(params).getPage(),
+                new EntityWrapper<VisitorInfoEntity>()
         );
         return new PageUtils(page);
     }
 
-	public PageUtils queryPage(Map<String, Object> params, Wrapper<FangkexinxiEntity> wrapper) {
-		  Page<FangkexinxiView> page =new Query<FangkexinxiView>(params).getPage();
+	public PageUtils queryPage(Map<String, Object> params, Wrapper<VisitorInfoEntity> wrapper) {
+		  Page<VisitorInfoView> page =new Query<VisitorInfoView>(params).getPage();
 	        page.setRecords(baseMapper.selectListView(page,wrapper));
 	    	PageUtils pageUtil = new PageUtils(page);
 	    	return pageUtil;
  	}
 
-	public List<FangkexinxiVO> selectListVO(Wrapper<FangkexinxiEntity> wrapper) {
+	public List<VisitorInfoVO> selectListVO(Wrapper<VisitorInfoEntity> wrapper) {
  		return baseMapper.selectListVO(wrapper);
 	}
 
-	public FangkexinxiVO selectVO(Wrapper<FangkexinxiEntity> wrapper) {
+	public VisitorInfoVO selectVO(Wrapper<VisitorInfoEntity> wrapper) {
  		return baseMapper.selectVO(wrapper);
 	}
 
-	public List<FangkexinxiView> selectListView(Wrapper<FangkexinxiEntity> wrapper) {
+	public List<VisitorInfoView> selectListView(Wrapper<VisitorInfoEntity> wrapper) {
 		return baseMapper.selectListView(wrapper);
 	}
 
-	public FangkexinxiView selectView(Wrapper<FangkexinxiEntity> wrapper) {
+	public VisitorInfoView selectView(Wrapper<VisitorInfoEntity> wrapper) {
 		return baseMapper.selectView(wrapper);
 	}
 

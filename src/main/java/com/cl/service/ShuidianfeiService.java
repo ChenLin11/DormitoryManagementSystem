@@ -3,31 +3,31 @@ package com.cl.service;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.service.IService;
 import com.cl.utils.PageUtils;
-import com.cl.entity.ShuidianfeiEntity;
+import com.cl.entity.ElectricityCostEntity;
 import java.util.List;
 import java.util.Map;
 import com.cl.entity.vo.ShuidianfeiVO;
 import org.apache.ibatis.annotations.Param;
-import com.cl.entity.view.ShuidianfeiView;
+import com.cl.entity.view.ElectricityCostView;
 
 
 /**
  * 水电费
  *
  */
-public interface ShuidianfeiService extends IService<ShuidianfeiEntity> {
+public interface ShuidianfeiService extends IService<ElectricityCostEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
     
-   	List<ShuidianfeiVO> selectListVO(Wrapper<ShuidianfeiEntity> wrapper);
+   	List<ShuidianfeiVO> selectListVO(Wrapper<ElectricityCostEntity> wrapper);
    	
-   	ShuidianfeiVO selectVO(@Param("ew") Wrapper<ShuidianfeiEntity> wrapper);
+   	ShuidianfeiVO selectVO(@Param("ew") Wrapper<ElectricityCostEntity> wrapper);
    	
-   	List<ShuidianfeiView> selectListView(Wrapper<ShuidianfeiEntity> wrapper);
+   	List<ElectricityCostView> selectListView(Wrapper<ElectricityCostEntity> wrapper);
    	
-   	ShuidianfeiView selectView(@Param("ew") Wrapper<ShuidianfeiEntity> wrapper);
+   	ElectricityCostView selectView(@Param("ew") Wrapper<ElectricityCostEntity> wrapper);
    	
-   	PageUtils queryPage(Map<String, Object> params, Wrapper<ShuidianfeiEntity> wrapper);
+   	PageUtils queryPage(Map<String, Object> params, Wrapper<ElectricityCostEntity> wrapper);
    	
 }
 

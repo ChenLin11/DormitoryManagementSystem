@@ -1,0 +1,97 @@
+package com.cl.entity;
+
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.cl.entity.exception.EIException;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
+import org.springframework.beans.BeanUtils;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.io.Serializable;
+import java.util.Date;
+
+
+/**
+ * 访客信息
+ * 数据库通用操作实体类（普通增删改查）
+ */
+@Data
+@TableName("vistorinfo")
+public class VisitorInfoEntity<T> implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+
+    public VisitorInfoEntity() {
+
+    }
+
+    public VisitorInfoEntity(T t) {
+        try {
+            BeanUtils.copyProperties(this, t);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            throw new EIException(e.getMessage());
+        }
+    }
+
+    /**
+     * 主键id
+     */
+    @TableId(value = "id", type = IdType.ID_WORKER_STR)
+    private String id;
+    /**
+     * 访客姓名
+     */
+
+    private String visitorName;
+
+    /**
+     * 电话
+     */
+
+    private String phoneNumber;
+
+    /**
+     * 宿舍号
+     */
+
+    private String roomId;
+
+    /**
+     * 到访原因
+     */
+
+    private String visitReason;
+
+    /**
+     * 来访时间
+     */
+
+    @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat
+    private Date visitTime;
+
+    /**
+     * 离开时间
+     */
+
+    @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat
+    private Date leaveTime;
+
+    /**
+     * 备注
+     */
+
+    private String postScript;
+
+
+    @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat
+    private Date createDate;
+
+
+}

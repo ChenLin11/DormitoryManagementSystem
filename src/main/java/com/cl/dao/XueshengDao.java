@@ -1,6 +1,6 @@
 package com.cl.dao;
 
-import com.cl.entity.XueshengEntity;
+import com.cl.entity.Student;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import java.util.List;
 import com.baomidou.mybatisplus.mapper.Wrapper;
@@ -15,16 +15,16 @@ import com.cl.entity.view.XueshengView;
  * 学生
  *
  */
-public interface XueshengDao extends BaseMapper<XueshengEntity> {
+public interface XueshengDao extends BaseMapper<Student> {
 	
-	List<XueshengVO> selectListVO(@Param("ew") Wrapper<XueshengEntity> wrapper);
+	List<XueshengVO> selectListVO(@Param("ew") Wrapper<Student> wrapper);
 	
-	XueshengVO selectVO(@Param("ew") Wrapper<XueshengEntity> wrapper);
+	XueshengVO selectVO(@Param("ew") Wrapper<Student> wrapper);
 	
-	List<XueshengView> selectListView(@Param("ew") Wrapper<XueshengEntity> wrapper);
+	List<XueshengView> selectListView(@Param("ew") Wrapper<Student> wrapper);
 
-	List<XueshengView> selectListView(Pagination page, @Param("ew") Wrapper<XueshengEntity> wrapper);
+	List<XueshengView> selectListView(Pagination page, @Param("ew") Wrapper<Student> wrapper);
 	
-	XueshengView selectView(@Param("ew") Wrapper<XueshengEntity> wrapper);
+	XueshengView selectView(@Param("ew") Wrapper<Student> wrapper);
 	
 }

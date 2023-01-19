@@ -13,43 +13,43 @@ import com.cl.utils.Query;
 
 
 import com.cl.dao.XueshengDao;
-import com.cl.entity.XueshengEntity;
+import com.cl.entity.Student;
 import com.cl.service.XueshengService;
 import com.cl.entity.vo.XueshengVO;
 import com.cl.entity.view.XueshengView;
 
 @Service("xueshengService")
-public class XueshengServiceImpl extends ServiceImpl<XueshengDao, XueshengEntity> implements XueshengService {
+public class XueshengServiceImpl extends ServiceImpl<XueshengDao, Student> implements XueshengService {
 	
 
     public PageUtils queryPage(Map<String, Object> params) {
-        Page<XueshengEntity> page = this.selectPage(
-                new Query<XueshengEntity>(params).getPage(),
-                new EntityWrapper<XueshengEntity>()
+        Page<Student> page = this.selectPage(
+                new Query<Student>(params).getPage(),
+                new EntityWrapper<Student>()
         );
         return new PageUtils(page);
     }
 
-	public PageUtils queryPage(Map<String, Object> params, Wrapper<XueshengEntity> wrapper) {
+	public PageUtils queryPage(Map<String, Object> params, Wrapper<Student> wrapper) {
 		  Page<XueshengView> page =new Query<XueshengView>(params).getPage();
 	        page.setRecords(baseMapper.selectListView(page,wrapper));
 	    	PageUtils pageUtil = new PageUtils(page);
 	    	return pageUtil;
  	}
 
-	public List<XueshengVO> selectListVO(Wrapper<XueshengEntity> wrapper) {
+	public List<XueshengVO> selectListVO(Wrapper<Student> wrapper) {
  		return baseMapper.selectListVO(wrapper);
 	}
 
-	public XueshengVO selectVO(Wrapper<XueshengEntity> wrapper) {
+	public XueshengVO selectVO(Wrapper<Student> wrapper) {
  		return baseMapper.selectVO(wrapper);
 	}
 
-	public List<XueshengView> selectListView(Wrapper<XueshengEntity> wrapper) {
+	public List<XueshengView> selectListView(Wrapper<Student> wrapper) {
 		return baseMapper.selectListView(wrapper);
 	}
 
-	public XueshengView selectView(Wrapper<XueshengEntity> wrapper) {
+	public XueshengView selectView(Wrapper<Student> wrapper) {
 		return baseMapper.selectView(wrapper);
 	}
 

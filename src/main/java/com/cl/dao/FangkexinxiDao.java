@@ -1,30 +1,30 @@
 package com.cl.dao;
 
-import com.cl.entity.FangkexinxiEntity;
+import com.cl.entity.VisitorInfoEntity;
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import java.util.List;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 
 import org.apache.ibatis.annotations.Param;
-import com.cl.entity.vo.FangkexinxiVO;
-import com.cl.entity.view.FangkexinxiView;
+import com.cl.entity.vo.VisitorInfoVO;
+import com.cl.entity.view.VisitorInfoView;
 
 
 /**
  * 访客信息
  *
  */
-public interface FangkexinxiDao extends BaseMapper<FangkexinxiEntity> {
+public interface FangkexinxiDao extends BaseMapper<VisitorInfoEntity> {
 	
-	List<FangkexinxiVO> selectListVO(@Param("ew") Wrapper<FangkexinxiEntity> wrapper);
+	List<VisitorInfoVO> selectListVO(@Param("ew") Wrapper<VisitorInfoEntity> wrapper);
 	
-	FangkexinxiVO selectVO(@Param("ew") Wrapper<FangkexinxiEntity> wrapper);
+	VisitorInfoVO selectVO(@Param("ew") Wrapper<VisitorInfoEntity> wrapper);
 	
-	List<FangkexinxiView> selectListView(@Param("ew") Wrapper<FangkexinxiEntity> wrapper);
+	List<VisitorInfoView> selectListView(@Param("ew") Wrapper<VisitorInfoEntity> wrapper);
 
-	List<FangkexinxiView> selectListView(Pagination page, @Param("ew") Wrapper<FangkexinxiEntity> wrapper);
+	List<VisitorInfoView> selectListView(Pagination page, @Param("ew") Wrapper<VisitorInfoEntity> wrapper);
 	
-	FangkexinxiView selectView(@Param("ew") Wrapper<FangkexinxiEntity> wrapper);
+	VisitorInfoView selectView(@Param("ew") Wrapper<VisitorInfoEntity> wrapper);
 	
 }

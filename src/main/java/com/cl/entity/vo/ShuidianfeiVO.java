@@ -1,11 +1,7 @@
 package com.cl.entity.vo;
 
-import com.cl.entity.ShuidianfeiEntity;
 
-import com.baomidou.mybatisplus.annotations.TableName;
-import com.fasterxml.jackson.annotation.JsonFormat;
-import java.util.Date;
-import org.springframework.format.annotation.DateTimeFormat;
+import lombok.Data;
 
 import java.io.Serializable;
  
@@ -15,6 +11,7 @@ import java.io.Serializable;
  * 手机端接口返回实体辅助类 
  * （主要作用去除一些不必要的字段）
  */
+@Data
 public class ShuidianfeiVO  implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -37,52 +34,5 @@ public class ShuidianfeiVO  implements Serializable {
 	
 	private Integer jine;
 				
-	
-	/**
-	 * 设置：月份
-	 */
-	 
-	public void setYuefen(String yuefen) {
-		this.yuefen = yuefen;
-	}
-	
-	/**
-	 * 获取：月份
-	 */
-	public String getYuefen() {
-		return yuefen;
-	}
-				
-	
-	/**
-	 * 设置：收费类型
-	 */
-	 
-	public void setShoufeileixing(String shoufeileixing) {
-		this.shoufeileixing = shoufeileixing;
-	}
-	
-	/**
-	 * 获取：收费类型
-	 */
-	public String getShoufeileixing() {
-		return shoufeileixing;
-	}
-				
-	
-	/**
-	 * 设置：金额
-	 */
-	 
-	public void setJine(Integer jine) {
-		this.jine = jine;
-	}
-	
-	/**
-	 * 获取：金额
-	 */
-	public Integer getJine() {
-		return jine;
-	}
-			
+
 }

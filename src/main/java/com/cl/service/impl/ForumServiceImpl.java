@@ -13,43 +13,43 @@ import com.cl.utils.Query;
 
 
 import com.cl.dao.ForumDao;
-import com.cl.entity.ForumEntity;
+import com.cl.entity.PostEntity;
 import com.cl.service.ForumService;
 import com.cl.entity.vo.ForumVO;
-import com.cl.entity.view.ForumView;
+import com.cl.entity.view.PostView;
 
 @Service("forumService")
-public class ForumServiceImpl extends ServiceImpl<ForumDao, ForumEntity> implements ForumService {
+public class ForumServiceImpl extends ServiceImpl<ForumDao, PostEntity> implements ForumService {
 	
 
     public PageUtils queryPage(Map<String, Object> params) {
-        Page<ForumEntity> page = this.selectPage(
-                new Query<ForumEntity>(params).getPage(),
-                new EntityWrapper<ForumEntity>()
+        Page<PostEntity> page = this.selectPage(
+                new Query<PostEntity>(params).getPage(),
+                new EntityWrapper<PostEntity>()
         );
         return new PageUtils(page);
     }
 
-	public PageUtils queryPage(Map<String, Object> params, Wrapper<ForumEntity> wrapper) {
-		  Page<ForumView> page =new Query<ForumView>(params).getPage();
+	public PageUtils queryPage(Map<String, Object> params, Wrapper<PostEntity> wrapper) {
+		  Page<PostView> page =new Query<PostView>(params).getPage();
 	        page.setRecords(baseMapper.selectListView(page,wrapper));
 	    	PageUtils pageUtil = new PageUtils(page);
 	    	return pageUtil;
  	}
 
-	public List<ForumVO> selectListVO(Wrapper<ForumEntity> wrapper) {
+	public List<ForumVO> selectListVO(Wrapper<PostEntity> wrapper) {
  		return baseMapper.selectListVO(wrapper);
 	}
 
-	public ForumVO selectVO(Wrapper<ForumEntity> wrapper) {
+	public ForumVO selectVO(Wrapper<PostEntity> wrapper) {
  		return baseMapper.selectVO(wrapper);
 	}
 
-	public List<ForumView> selectListView(Wrapper<ForumEntity> wrapper) {
+	public List<PostView> selectListView(Wrapper<PostEntity> wrapper) {
 		return baseMapper.selectListView(wrapper);
 	}
 
-	public ForumView selectView(Wrapper<ForumEntity> wrapper) {
+	public PostView selectView(Wrapper<PostEntity> wrapper) {
 		return baseMapper.selectView(wrapper);
 	}
 

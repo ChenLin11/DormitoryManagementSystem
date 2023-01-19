@@ -1,18 +1,12 @@
 package com.cl.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Map;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Date;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
-import com.cl.utils.ValidatorUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,18 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.cl.annotation.IgnoreAuth;
 
-import com.cl.entity.SushebaoxiuEntity;
-import com.cl.entity.view.SushebaoxiuView;
+import com.cl.entity.RepairEntity;
+import com.cl.entity.view.RepairView;
 
 import com.cl.service.SushebaoxiuService;
-import com.cl.service.TokenService;
 import com.cl.utils.PageUtils;
 import com.cl.utils.R;
-import com.cl.utils.MD5Util;
 import com.cl.utils.MPUtil;
-import com.cl.utils.CommonUtil;
 
 
 /**
@@ -50,13 +40,13 @@ public class SushebaoxiuController {
      * 后端列表
      */
     @RequestMapping("/page")
-    public R page(@RequestParam Map<String, Object> params,SushebaoxiuEntity sushebaoxiu, HttpServletRequest request){
+    public R page(@RequestParam Map<String, Object> params, RepairEntity sushebaoxiu, HttpServletRequest request){
 
 		String tableName = request.getSession().getAttribute("tableName").toString();
 		if(tableName.equals("xuesheng")) {
 			sushebaoxiu.setXuehao((String)request.getSession().getAttribute("username"));
 		}
-        EntityWrapper<SushebaoxiuEntity> ew = new EntityWrapper<SushebaoxiuEntity>();
+        EntityWrapper<RepairEntity> ew = new EntityWrapper<RepairEntity>();
 		PageUtils page = sushebaoxiuService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, sushebaoxiu), params), params));
         return R.ok().put("data", page);
     }
@@ -65,8 +55,8 @@ public class SushebaoxiuController {
      * 前端列表
      */
     @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params,SushebaoxiuEntity sushebaoxiu, HttpServletRequest request){
-        EntityWrapper<SushebaoxiuEntity> ew = new EntityWrapper<SushebaoxiuEntity>();
+    public R list(@RequestParam Map<String, Object> params, RepairEntity sushebaoxiu, HttpServletRequest request){
+        EntityWrapper<RepairEntity> ew = new EntityWrapper<RepairEntity>();
 		PageUtils page = sushebaoxiuService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, sushebaoxiu), params), params));
         return R.ok().put("data", page);
     }
@@ -75,8 +65,8 @@ public class SushebaoxiuController {
      * 列表
      */
     @RequestMapping("/lists")
-    public R list( SushebaoxiuEntity sushebaoxiu){
-       	EntityWrapper<SushebaoxiuEntity> ew = new EntityWrapper<SushebaoxiuEntity>();
+    public R list( RepairEntity sushebaoxiu){
+       	EntityWrapper<RepairEntity> ew = new EntityWrapper<RepairEntity>();
       	ew.allEq(MPUtil.allEQMapPre( sushebaoxiu, "sushebaoxiu")); 
         return R.ok().put("data", sushebaoxiuService.selectListView(ew));
     }
@@ -85,10 +75,10 @@ public class SushebaoxiuController {
      * 查询
      */
     @RequestMapping("/query")
-    public R query(SushebaoxiuEntity sushebaoxiu){
-        EntityWrapper< SushebaoxiuEntity> ew = new EntityWrapper< SushebaoxiuEntity>();
+    public R query(RepairEntity sushebaoxiu){
+        EntityWrapper<RepairEntity> ew = new EntityWrapper<RepairEntity>();
  		ew.allEq(MPUtil.allEQMapPre( sushebaoxiu, "sushebaoxiu")); 
-		SushebaoxiuView sushebaoxiuView =  sushebaoxiuService.selectView(ew);
+		RepairView sushebaoxiuView =  sushebaoxiuService.selectView(ew);
 		return R.ok("查询宿舍报修成功").put("data", sushebaoxiuView);
     }
 	
@@ -97,7 +87,7 @@ public class SushebaoxiuController {
      */
     @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
-        SushebaoxiuEntity sushebaoxiu = sushebaoxiuService.selectById(id);
+        RepairEntity sushebaoxiu = sushebaoxiuService.selectById(id);
         return R.ok().put("data", sushebaoxiu);
     }
 
@@ -106,7 +96,7 @@ public class SushebaoxiuController {
      */
     @RequestMapping("/detail/{id}")
     public R detail(@PathVariable("id") Long id){
-        SushebaoxiuEntity sushebaoxiu = sushebaoxiuService.selectById(id);
+        RepairEntity sushebaoxiu = sushebaoxiuService.selectById(id);
         return R.ok().put("data", sushebaoxiu);
     }
     
@@ -117,7 +107,7 @@ public class SushebaoxiuController {
      * 后端保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody SushebaoxiuEntity sushebaoxiu, HttpServletRequest request){
+    public R save(@RequestBody RepairEntity sushebaoxiu, HttpServletRequest request){
     	sushebaoxiu.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
     	//ValidatorUtils.validateEntity(sushebaoxiu);
 
@@ -129,7 +119,7 @@ public class SushebaoxiuController {
      * 前端保存
      */
     @RequestMapping("/add")
-    public R add(@RequestBody SushebaoxiuEntity sushebaoxiu, HttpServletRequest request){
+    public R add(@RequestBody RepairEntity sushebaoxiu, HttpServletRequest request){
     	sushebaoxiu.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
     	//ValidatorUtils.validateEntity(sushebaoxiu);
 
@@ -141,7 +131,7 @@ public class SushebaoxiuController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody SushebaoxiuEntity sushebaoxiu, HttpServletRequest request){
+    public R update(@RequestBody RepairEntity sushebaoxiu, HttpServletRequest request){
         //ValidatorUtils.validateEntity(sushebaoxiu);
         sushebaoxiuService.updateById(sushebaoxiu);//全部更新
         return R.ok();
@@ -187,7 +177,7 @@ public class SushebaoxiuController {
 			}
 		}
 		
-		Wrapper<SushebaoxiuEntity> wrapper = new EntityWrapper<SushebaoxiuEntity>();
+		Wrapper<RepairEntity> wrapper = new EntityWrapper<RepairEntity>();
 		if(map.get("remindstart")!=null) {
 			wrapper.ge(columnName, map.get("remindstart"));
 		}

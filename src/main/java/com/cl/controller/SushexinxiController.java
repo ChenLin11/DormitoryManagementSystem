@@ -1,18 +1,12 @@
 package com.cl.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Map;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Date;
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
-import com.cl.utils.ValidatorUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,18 +15,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.baomidou.mybatisplus.mapper.EntityWrapper;
 import com.baomidou.mybatisplus.mapper.Wrapper;
-import com.cl.annotation.IgnoreAuth;
 
-import com.cl.entity.SushexinxiEntity;
-import com.cl.entity.view.SushexinxiView;
+import com.cl.entity.DormInfoEntity;
+import com.cl.entity.view.DormInfoView;
 
 import com.cl.service.SushexinxiService;
-import com.cl.service.TokenService;
 import com.cl.utils.PageUtils;
 import com.cl.utils.R;
-import com.cl.utils.MD5Util;
 import com.cl.utils.MPUtil;
-import com.cl.utils.CommonUtil;
 
 
 /**
@@ -51,9 +41,9 @@ public class SushexinxiController {
      * 后端列表
      */
     @RequestMapping("/page")
-    public R page(@RequestParam Map<String, Object> params,SushexinxiEntity sushexinxi, HttpServletRequest request){
+    public R page(@RequestParam Map<String, Object> params, DormInfoEntity sushexinxi, HttpServletRequest request){
 
-        EntityWrapper<SushexinxiEntity> ew = new EntityWrapper<SushexinxiEntity>();
+        EntityWrapper<DormInfoEntity> ew = new EntityWrapper<DormInfoEntity>();
 		PageUtils page = sushexinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, sushexinxi), params), params));
         return R.ok().put("data", page);
     }
@@ -62,8 +52,8 @@ public class SushexinxiController {
      * 前端列表
      */
     @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params,SushexinxiEntity sushexinxi, HttpServletRequest request){
-        EntityWrapper<SushexinxiEntity> ew = new EntityWrapper<SushexinxiEntity>();
+    public R list(@RequestParam Map<String, Object> params, DormInfoEntity sushexinxi, HttpServletRequest request){
+        EntityWrapper<DormInfoEntity> ew = new EntityWrapper<DormInfoEntity>();
 		PageUtils page = sushexinxiService.queryPage(params, MPUtil.sort(MPUtil.between(MPUtil.likeOrEq(ew, sushexinxi), params), params));
         return R.ok().put("data", page);
     }
@@ -72,8 +62,8 @@ public class SushexinxiController {
      * 列表
      */
     @RequestMapping("/lists")
-    public R list( SushexinxiEntity sushexinxi){
-       	EntityWrapper<SushexinxiEntity> ew = new EntityWrapper<SushexinxiEntity>();
+    public R list( DormInfoEntity sushexinxi){
+       	EntityWrapper<DormInfoEntity> ew = new EntityWrapper<DormInfoEntity>();
       	ew.allEq(MPUtil.allEQMapPre( sushexinxi, "sushexinxi")); 
         return R.ok().put("data", sushexinxiService.selectListView(ew));
     }
@@ -82,10 +72,10 @@ public class SushexinxiController {
      * 查询
      */
     @RequestMapping("/query")
-    public R query(SushexinxiEntity sushexinxi){
-        EntityWrapper< SushexinxiEntity> ew = new EntityWrapper< SushexinxiEntity>();
+    public R query(DormInfoEntity sushexinxi){
+        EntityWrapper<DormInfoEntity> ew = new EntityWrapper<DormInfoEntity>();
  		ew.allEq(MPUtil.allEQMapPre( sushexinxi, "sushexinxi")); 
-		SushexinxiView sushexinxiView =  sushexinxiService.selectView(ew);
+		DormInfoView sushexinxiView =  sushexinxiService.selectView(ew);
 		return R.ok("查询宿舍信息成功").put("data", sushexinxiView);
     }
 	
@@ -94,7 +84,7 @@ public class SushexinxiController {
      */
     @RequestMapping("/info/{id}")
     public R info(@PathVariable("id") Long id){
-        SushexinxiEntity sushexinxi = sushexinxiService.selectById(id);
+        DormInfoEntity sushexinxi = sushexinxiService.selectById(id);
         return R.ok().put("data", sushexinxi);
     }
 
@@ -103,7 +93,7 @@ public class SushexinxiController {
      */
     @RequestMapping("/detail/{id}")
     public R detail(@PathVariable("id") Long id){
-        SushexinxiEntity sushexinxi = sushexinxiService.selectById(id);
+        DormInfoEntity sushexinxi = sushexinxiService.selectById(id);
         return R.ok().put("data", sushexinxi);
     }
     
@@ -114,7 +104,7 @@ public class SushexinxiController {
      * 后端保存
      */
     @RequestMapping("/save")
-    public R save(@RequestBody SushexinxiEntity sushexinxi, HttpServletRequest request){
+    public R save(@RequestBody DormInfoEntity sushexinxi, HttpServletRequest request){
     	sushexinxi.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
     	//ValidatorUtils.validateEntity(sushexinxi);
 
@@ -126,7 +116,7 @@ public class SushexinxiController {
      * 前端保存
      */
     @RequestMapping("/add")
-    public R add(@RequestBody SushexinxiEntity sushexinxi, HttpServletRequest request){
+    public R add(@RequestBody DormInfoEntity sushexinxi, HttpServletRequest request){
     	sushexinxi.setId(new Date().getTime()+new Double(Math.floor(Math.random()*1000)).longValue());
     	//ValidatorUtils.validateEntity(sushexinxi);
 
@@ -138,7 +128,7 @@ public class SushexinxiController {
      * 修改
      */
     @RequestMapping("/update")
-    public R update(@RequestBody SushexinxiEntity sushexinxi, HttpServletRequest request){
+    public R update(@RequestBody DormInfoEntity sushexinxi, HttpServletRequest request){
         //ValidatorUtils.validateEntity(sushexinxi);
         sushexinxiService.updateById(sushexinxi);//全部更新
         return R.ok();
@@ -184,7 +174,7 @@ public class SushexinxiController {
 			}
 		}
 		
-		Wrapper<SushexinxiEntity> wrapper = new EntityWrapper<SushexinxiEntity>();
+		Wrapper<DormInfoEntity> wrapper = new EntityWrapper<DormInfoEntity>();
 		if(map.get("remindstart")!=null) {
 			wrapper.ge(columnName, map.get("remindstart"));
 		}

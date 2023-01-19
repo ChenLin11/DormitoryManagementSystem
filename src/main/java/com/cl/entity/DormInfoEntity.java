@@ -14,17 +14,27 @@ import java.util.Date;
 
 
 /**
- * 通知公告
+ * 宿舍信息
  * 数据库通用操作实体类（普通增删改查）
  */
 @Data
-@TableName("news")
-public class NewsEntity<T> implements Serializable {
+@TableName("sushexinxi")
+public class DormInfoEntity<T> implements Serializable {
     private static final long serialVersionUID = 1L;
 
 
-    public NewsEntity() {
+    public DormInfoEntity() {
 
+    }
+
+    public DormInfoEntity(T t) {
+        try {
+            BeanUtils.copyProperties(this, t);
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            throw new EIException(e.getMessage());
+        }
     }
 
     /**
@@ -33,32 +43,44 @@ public class NewsEntity<T> implements Serializable {
     @TableId(value = "id", type = IdType.ID_WORKER_STR)
     private String id;
     /**
-     * 标题
+     * 宿舍号
      */
 
-    private String title;
+    private String roomNumber;
 
     /**
-     * 简介
+     * 宿舍类型
      */
 
-    private String introduction;
+    private String roomType;
 
     /**
-     * 图片
+     * 位置
      */
 
-    private String picture;
+    private String location;
 
     /**
-     * 内容
+     * 可住人数
      */
 
-    private String content;
+    private Integer capacity;
+
+    /**
+     * 已住人数
+     */
+
+    private Integer residentCount;
+
+    /**
+     * 备注
+     */
+
+    private String postScript;
 
 
     @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat
-    private Date createDate;
+    private Date createTime;
 
 }

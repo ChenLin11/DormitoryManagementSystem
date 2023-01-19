@@ -13,43 +13,43 @@ import com.cl.utils.Query;
 
 
 import com.cl.dao.SushexinxiDao;
-import com.cl.entity.SushexinxiEntity;
+import com.cl.entity.DormInfoEntity;
 import com.cl.service.SushexinxiService;
 import com.cl.entity.vo.SushexinxiVO;
-import com.cl.entity.view.SushexinxiView;
+import com.cl.entity.view.DormInfoView;
 
 @Service("sushexinxiService")
-public class SushexinxiServiceImpl extends ServiceImpl<SushexinxiDao, SushexinxiEntity> implements SushexinxiService {
+public class SushexinxiServiceImpl extends ServiceImpl<SushexinxiDao, DormInfoEntity> implements SushexinxiService {
 	
 
     public PageUtils queryPage(Map<String, Object> params) {
-        Page<SushexinxiEntity> page = this.selectPage(
-                new Query<SushexinxiEntity>(params).getPage(),
-                new EntityWrapper<SushexinxiEntity>()
+        Page<DormInfoEntity> page = this.selectPage(
+                new Query<DormInfoEntity>(params).getPage(),
+                new EntityWrapper<DormInfoEntity>()
         );
         return new PageUtils(page);
     }
 
-	public PageUtils queryPage(Map<String, Object> params, Wrapper<SushexinxiEntity> wrapper) {
-		  Page<SushexinxiView> page =new Query<SushexinxiView>(params).getPage();
+	public PageUtils queryPage(Map<String, Object> params, Wrapper<DormInfoEntity> wrapper) {
+		  Page<DormInfoView> page =new Query<DormInfoView>(params).getPage();
 	        page.setRecords(baseMapper.selectListView(page,wrapper));
 	    	PageUtils pageUtil = new PageUtils(page);
 	    	return pageUtil;
  	}
 
-	public List<SushexinxiVO> selectListVO(Wrapper<SushexinxiEntity> wrapper) {
+	public List<SushexinxiVO> selectListVO(Wrapper<DormInfoEntity> wrapper) {
  		return baseMapper.selectListVO(wrapper);
 	}
 
-	public SushexinxiVO selectVO(Wrapper<SushexinxiEntity> wrapper) {
+	public SushexinxiVO selectVO(Wrapper<DormInfoEntity> wrapper) {
  		return baseMapper.selectVO(wrapper);
 	}
 
-	public List<SushexinxiView> selectListView(Wrapper<SushexinxiEntity> wrapper) {
+	public List<DormInfoView> selectListView(Wrapper<DormInfoEntity> wrapper) {
 		return baseMapper.selectListView(wrapper);
 	}
 
-	public SushexinxiView selectView(Wrapper<SushexinxiEntity> wrapper) {
+	public DormInfoView selectView(Wrapper<DormInfoEntity> wrapper) {
 		return baseMapper.selectView(wrapper);
 	}
 

@@ -10,36 +10,48 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.io.Serializable;
 import java.util.Date;
 
+
 /**
- * 用户
+ * 电费
+ * 数据库通用操作实体类（普通增删改查）
  */
-@TableName("users")
 @Data
-public class UserEntity implements Serializable {
+@TableName("electricitycost")
+public class ElectricityCostEntity<T> implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    /**
+     * 主键id
+     */
     @TableId(value = "id", type = IdType.ID_WORKER_STR)
     private String id;
+    /**
+     * 宿舍号
+     */
+
+    private String roomNumber;
 
     /**
-     * 用户账号
+     * 月份
      */
-    private String username;
+
+    private String monthNumber;
 
     /**
-     * 密码
+     * 收费类型
      */
-    private String password;
+
+    private String chargeType;
 
     /**
-     * 用户类型
+     * 金额
      */
-    private String role;
+
+    private Float amount;
+
 
     @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")
     @DateTimeFormat
-    private Date createTime;
-
-
+    private Date createDate;
 
 }

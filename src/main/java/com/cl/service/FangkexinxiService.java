@@ -3,31 +3,31 @@ package com.cl.service;
 import com.baomidou.mybatisplus.mapper.Wrapper;
 import com.baomidou.mybatisplus.service.IService;
 import com.cl.utils.PageUtils;
-import com.cl.entity.FangkexinxiEntity;
+import com.cl.entity.VisitorInfoEntity;
 import java.util.List;
 import java.util.Map;
-import com.cl.entity.vo.FangkexinxiVO;
+import com.cl.entity.vo.VisitorInfoVO;
 import org.apache.ibatis.annotations.Param;
-import com.cl.entity.view.FangkexinxiView;
+import com.cl.entity.view.VisitorInfoView;
 
 
 /**
  * 访客信息
  *
  */
-public interface FangkexinxiService extends IService<FangkexinxiEntity> {
+public interface FangkexinxiService extends IService<VisitorInfoEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
     
-   	List<FangkexinxiVO> selectListVO(Wrapper<FangkexinxiEntity> wrapper);
+   	List<VisitorInfoVO> selectListVO(Wrapper<VisitorInfoEntity> wrapper);
    	
-   	FangkexinxiVO selectVO(@Param("ew") Wrapper<FangkexinxiEntity> wrapper);
+   	VisitorInfoVO selectVO(@Param("ew") Wrapper<VisitorInfoEntity> wrapper);
    	
-   	List<FangkexinxiView> selectListView(Wrapper<FangkexinxiEntity> wrapper);
+   	List<VisitorInfoView> selectListView(Wrapper<VisitorInfoEntity> wrapper);
    	
-   	FangkexinxiView selectView(@Param("ew") Wrapper<FangkexinxiEntity> wrapper);
+   	VisitorInfoView selectView(@Param("ew") Wrapper<VisitorInfoEntity> wrapper);
    	
-   	PageUtils queryPage(Map<String, Object> params, Wrapper<FangkexinxiEntity> wrapper);
+   	PageUtils queryPage(Map<String, Object> params, Wrapper<VisitorInfoEntity> wrapper);
    	
 }
 

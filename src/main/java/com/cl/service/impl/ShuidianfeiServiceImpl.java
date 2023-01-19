@@ -13,42 +13,42 @@ import com.cl.utils.Query;
 
 
 import com.cl.dao.ShuidianfeiDao;
-import com.cl.entity.ShuidianfeiEntity;
+import com.cl.entity.ElectricityCostEntity;
 import com.cl.service.ShuidianfeiService;
 import com.cl.entity.vo.ShuidianfeiVO;
-import com.cl.entity.view.ShuidianfeiView;
+import com.cl.entity.view.ElectricityCostView;
 
 @Service("shuidianfeiService")
-public class ShuidianfeiServiceImpl extends ServiceImpl<ShuidianfeiDao, ShuidianfeiEntity> implements ShuidianfeiService {
+public class ShuidianfeiServiceImpl extends ServiceImpl<ShuidianfeiDao, ElectricityCostEntity> implements ShuidianfeiService {
 
     public PageUtils queryPage(Map<String, Object> params) {
-        Page<ShuidianfeiEntity> page = this.selectPage(
-                new Query<ShuidianfeiEntity>(params).getPage(),
-                new EntityWrapper<ShuidianfeiEntity>()
+        Page<ElectricityCostEntity> page = this.selectPage(
+                new Query<ElectricityCostEntity>(params).getPage(),
+                new EntityWrapper<ElectricityCostEntity>()
         );
         return new PageUtils(page);
     }
 
-	public PageUtils queryPage(Map<String, Object> params, Wrapper<ShuidianfeiEntity> wrapper) {
-		  Page<ShuidianfeiView> page =new Query<ShuidianfeiView>(params).getPage();
+	public PageUtils queryPage(Map<String, Object> params, Wrapper<ElectricityCostEntity> wrapper) {
+		  Page<ElectricityCostView> page =new Query<ElectricityCostView>(params).getPage();
 	        page.setRecords(baseMapper.selectListView(page,wrapper));
 	    	PageUtils pageUtil = new PageUtils(page);
 	    	return pageUtil;
  	}
 
-	public List<ShuidianfeiVO> selectListVO(Wrapper<ShuidianfeiEntity> wrapper) {
+	public List<ShuidianfeiVO> selectListVO(Wrapper<ElectricityCostEntity> wrapper) {
  		return baseMapper.selectListVO(wrapper);
 	}
 
-	public ShuidianfeiVO selectVO(Wrapper<ShuidianfeiEntity> wrapper) {
+	public ShuidianfeiVO selectVO(Wrapper<ElectricityCostEntity> wrapper) {
  		return baseMapper.selectVO(wrapper);
 	}
 
-	public List<ShuidianfeiView> selectListView(Wrapper<ShuidianfeiEntity> wrapper) {
+	public List<ElectricityCostView> selectListView(Wrapper<ElectricityCostEntity> wrapper) {
 		return baseMapper.selectListView(wrapper);
 	}
 
-	public ShuidianfeiView selectView(Wrapper<ShuidianfeiEntity> wrapper) {
+	public ElectricityCostView selectView(Wrapper<ElectricityCostEntity> wrapper) {
 		return baseMapper.selectView(wrapper);
 	}
 
