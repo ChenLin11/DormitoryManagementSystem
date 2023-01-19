@@ -22,11 +22,6 @@ import java.util.Date;
 public class ChatEntity<T> implements Serializable {
     private static final long serialVersionUID = 1L;
 
-
-    public ChatEntity() {
-
-    }
-
     /**
      * 主键id
      */
@@ -60,7 +55,7 @@ public class ChatEntity<T> implements Serializable {
      * 是否回复
      */
 
-    private Integer isreply;
+    private Integer isReply;
 
 
     @JsonFormat(locale = "zh", timezone = "GMT+8", pattern = "yyyy-MM-dd HH:mm:ss")

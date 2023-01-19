@@ -29,7 +29,7 @@ public class ElectricityCostEntity<T> implements Serializable {
      * 宿舍号
      */
 
-    private String roomNumber;
+    private String roomId;
 
     /**
      * 月份

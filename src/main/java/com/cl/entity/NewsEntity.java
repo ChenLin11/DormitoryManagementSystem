@@ -21,12 +21,7 @@ import java.util.Date;
 @TableName("news")
 public class NewsEntity<T> implements Serializable {
     private static final long serialVersionUID = 1L;
-
-
-    public NewsEntity() {
-
-    }
-
+    
     /**
      * 主键id
      */

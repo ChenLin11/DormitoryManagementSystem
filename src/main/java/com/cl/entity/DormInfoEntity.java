@@ -18,24 +18,9 @@ import java.util.Date;
  * 数据库通用操作实体类（普通增删改查）
  */
 @Data
-@TableName("sushexinxi")
+@TableName("dorminfo")
 public class DormInfoEntity<T> implements Serializable {
     private static final long serialVersionUID = 1L;
-
-
-    public DormInfoEntity() {
-
-    }
-
-    public DormInfoEntity(T t) {
-        try {
-            BeanUtils.copyProperties(this, t);
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            throw new EIException(e.getMessage());
-        }
-    }
 
     /**
      * 主键id
